@@ -100,7 +100,7 @@ def handle_scaling(age, df):
     cols_to_scale = scaler_object['cols_to_scale']
     scaler = scaler_object['scaler']
 
-    df['income_level'] = None # since scaler object expects income_level supply it. This will have no impact on
+    df['income_level'] = 0 # since scaler object expects income_level supply it. This will have no impact on
     df[cols_to_scale] = scaler.transform(df[cols_to_scale])
 
     df.drop('income_level', axis='columns', inplace=True)
@@ -115,7 +115,7 @@ def predict(input_dict):
     else:
         prediction = model_rest.predict(input_df)
 
-    return int(prediction[0])
+    return float(prediction[0])
 
                                                                        
 
